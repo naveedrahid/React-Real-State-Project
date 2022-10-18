@@ -28,6 +28,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 app.use('/api/users', usersRoute);
+
 app.use((error, req, resp, next)=> {
     const errorStatus = error.status || 500;
     const errorMessage = error.message || 'some thing went wrong';
