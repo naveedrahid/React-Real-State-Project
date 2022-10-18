@@ -6,8 +6,8 @@ export const createHotel = async(req, resp, next) => {
     try {
         const savedHotel = await newHotel.save();
         resp.status(200).json(savedHotel);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 }
 
@@ -18,8 +18,8 @@ export const updateHotel = async(req, resp, next) => {
     try {
         const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id, {$set: req.body},{new:true});
         resp.status(200).json(updatedHotel);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 }
 
@@ -29,8 +29,8 @@ export const deleteHotel = async(req, resp, next) => {
     try {
         await Hotel.findByIdAndDelete(req.params.id);
         resp.status(200).json("Hotel Successfully Deleted");
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 }
 
@@ -42,8 +42,8 @@ export const getHotel = async(req, resp, next) => {
     try {
         const hotel = await Hotel.findById(req.params.id);
         resp.status(200).json(hotel);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 }
 
@@ -55,7 +55,7 @@ export const getAllHotel = async(req, resp, next) => {
     try {
         const hotels = await Hotel.find();
         resp.status(200).json(hotels);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     }
 }

@@ -14,8 +14,8 @@ const connect = async () => {
         await mongoose.connect(process.env.MONGO);
         console.log('connect Mongo DB');
         
-    } catch (error) {
-        throw error;
+    } catch (err) {
+        throw err;
     }
 }
 
@@ -29,14 +29,14 @@ app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 app.use('/api/users', usersRoute);
 
-app.use((error, req, resp, next)=> {
-    const errorStatus = error.status || 500;
-    const errorMessage = error.message || 'some thing went wrong';
-    return resp.status(errorStatus).json({
+app.use((err, req, resp, next)=> {
+    const errStatus = err.status || 500;
+    const errMessage = err.message || 'some thing went wrong';
+    return resp.status(errStatus).json({
         success: false,
-        status: errorStatus,
-        message:errorMessage,
-        stack:error.stack
+        status: errStatus,
+        message:errMessage,
+        stack:err.stack
     });
 });
 
