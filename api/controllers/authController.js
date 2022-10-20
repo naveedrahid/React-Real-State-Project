@@ -31,7 +31,7 @@ export const login =  async (req, resp, next) => {
             {
                 id: user._id, 
                 isAdmin: user.isAdmin
-            }, 'dfsdfdfdf');
+            }, process.env.JWT);
         const {password , isAdmin, ...otherDetails} = user._doc;
         resp.cookie('access_token', token,{
             httpOnly:true,
